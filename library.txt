@@ -1,0 +1,45 @@
+var LibraryBook = function (bookTitle, yearOfPublication, authorOfBook) {
+    var title= bookTitle || "Unknown"
+    var year = yearOfPublication || "Unknown"
+    var author = authorOfBook || "Unknown"
+    var  readerName =null
+    var  readerData =null
+   
+    function giveTheBook (client, data) {
+        readerName = client
+        readerData = new Date (data)
+    }
+   
+     this.getBookInfo = function () {
+         readerName? console.log("Выдана на руки "+ readerData): 
+                     console.log("'"+bookTitle +"' есть в наличии")
+     }
+
+    this.getTheBook = function ( client, data ) {
+         if (readerName) { console.log("Выдана на руки "+ readerData) 
+                    return null } 
+         else {
+            giveTheBook ( client, data ) 
+            return console.log(bookTitle)
+            }
+   }
+
+    this.returnBook = function () {
+       readerName = null 
+       readerData = null 
+       }
+
+}
+var library = []
+library [0] = new LibraryBook ( "Идиот", "1869", "Достоевский Ф.М." )
+library [1] = new LibraryBook ( "Анна Каренина", "1877", "Лев Николаевич Толстой" )
+library [2] = new LibraryBook ( "Белый клык", "1906", "Джек Лондон" )
+library [3] = new LibraryBook ( "Приключения Тома Сойера", "1878", "Марк Твен" )
+
+
+console.log ( library )
+library [0].getBookInfo()
+library [0].getTheBook( "Вася Пупкин", new Date ( 2018, 10, 15 ) )
+library [0].getBookInfo()
+library [0].returnBook()
+library [0].getBookInfo()

@@ -1,0 +1,49 @@
+var bag = {
+                brush: ["teezer", "wood"],
+                lipstick: ["red", "pink"],
+                mascara: ["black"],
+                smartphone: ["samsung"],
+                wallet: ["white"],
+                money: ["coins", "dollars"]
+            };
+
+            bag.addToBag = function (thing, prop) {
+                for (var idThing in bag) {
+                    if (idThing==thing) {
+                        for (var proper of bag[thing]) {
+                          if (prop == proper ) {
+                            console.log ('This bag is not black hole. Please, stop put duplicates there!');
+                            return bag;
+                          }
+                        }
+                      bag[thing].push(prop);
+                      return bag;
+                    }
+                } 
+              bag[thing]= [prop];
+              return bag;
+            }
+            
+            bag.delFromBag = function (thing, prop) {
+                 for (var idThing in bag) {
+                   if (idThing==thing ) {
+                     for (var proper of bag[thing]) {
+                          if ((prop == proper) &&(bag[thing].length>1)) {
+                              var id = bag[thing].indexOf(prop);
+                              bag[thing].splice(id, 1)
+                              return bag;
+                          }
+                           if ((prop == proper) &&(bag[thing].length==1)) {  
+                                delete bag[thing];
+                                return bag;
+                           }
+                       }
+                     }           
+                  }
+              console.log ("There is no such thing in your bag")
+              return bag;
+            }
+
+            bag.delFromBag ("mascara", "black");
+            bag.addToBag ("smartphone", "nokia");
+            bag.addToBag ("documents", "passport");
